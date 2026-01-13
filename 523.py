@@ -21,9 +21,11 @@ def has_good_subarray(nums, k):
 
         # if we see this remainder before we found a good subarray
         if remainder in seen_remainders:
-            return True
-        
-        seen_remainders[remainder] = i
+            # check if the subarray is at least 2 elements long
+            if i - seen_remainders[remainder] >= 2:
+                return True
+        else:
+            seen_remainders[remainder] = i
     return False
     
 # debug your code below
